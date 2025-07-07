@@ -1,0 +1,4 @@
+<div class="center">
+    <input type="text" placeholder="Search" (input)="searchEmployees()" [(ngModel)]="searchString">
+    <app-child-page [employees]="filteredEmployees"></app-child-page>
+</div>
