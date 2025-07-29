@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParentPageComponent } from './parent-page.component';
+import { SettingComponent } from './setting.component';
 
-describe('ParentPageComponent', () => {
-  let component: ParentPageComponent;
-  let fixture: ComponentFixture<ParentPageComponent>;
+describe('SettingComponent', () => {
+  let component: SettingComponent;
+  let fixture: ComponentFixture<SettingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ParentPageComponent]
+      imports: [SettingComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ParentPageComponent);
+    fixture = TestBed.createComponent(SettingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
