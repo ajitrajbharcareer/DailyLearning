@@ -1,0 +1,106 @@
+<div class="form-container">
+  <h2>Company and Employees Form - FormArray </h2>
+  
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <!-- Company Information -->
+    <div class="form-section">
+      <h3>Company Information</h3>
+      
+      <div class="form-group">
+        <label for="companyName">Company Name*</label>
+        <input type="text" id="companyName" formControlName="companyName">
+        <div *ngIf="companyForm.get('companyName')?.touched && companyForm.get('companyName')?.errors?.['required']" 
+             class="error-message">
+          Company name is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="companyAddress">Company Address</label>
+        <input type="text" id="companyAddress" formControlName="companyAddress">
+      </div>
+    </div>
+    
+    <!-- Employees Section -->
+    <div class="form-section">
+      <h3>Employees</h3>
+      
+      <div formArrayName="employees" class="employees-container">
+        <div *ngFor="let employee of employees.controls; let i = index" [formGroupName]="i" class="employee-card">
+          <div class="employee-header">
+            <h4>Employee #{{i + 1}}</h4>
+            <button type="button" (click)="removeEmployee(i)" class="remove-btn" *ngIf="employees.length > 1">
+              Remove
+            </button>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name*</label>
+              <input type="text" formControlName="name">
+              <div *ngIf="employee.get('name')?.touched && employee.get('name')?.errors?.['required']" 
+                   class="error-message">
+                Employee name is required
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Position*</label>
+              <input type="text" formControlName="position">
+              <div *ngIf="employee.get('position')?.touched && employee.get('position')?.errors?.['required']" 
+                   class="error-message">
+                Position is required
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email*</label>
+              <input type="email" formControlName="email">
+              <div *ngIf="employee.get('email')?.touched && employee.get('email')?.errors?.['required']" 
+                   class="error-message">
+                Email is required
+              </div>
+              <div *ngIf="employee.get('email')?.touched && employee.get('email')?.errors?.['email']" 
+                   class="error-message">
+                Please enter a valid email
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Salary*</label>
+              <input type="number" formControlName="salary">
+              <div *ngIf="employee.get('salary')?.touched && employee.get('salary')?.errors?.['required']" 
+                   class="error-message">
+                Salary is required
+              </div>
+              <div *ngIf="employee.get('salary')?.touched && employee.get('salary')?.errors?.['min']" 
+                   class="error-message">
+                Salary must be at least 1000
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" formControlName="isFullTime"> Full-time employee
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <button type="button" (click)="addEmployee()" class="add-btn">Add Employee</button>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="submit-btn">Save Company Data</button>
+    </div>
+  </form>
+  
+  <!-- Debug output (optional) -->
+  <div class="debug-output" *ngIf="companyForm.value">
+    <h3>Form Value</h3>
+    <pre>{{ companyForm.value | json }}</pre>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+    <h2>User Registration - Reactive Form</h2>
+    <form [formGroup]="userForm">
+      <div>
+        <label>Name:</label>
+        <input type="text" formControlName="name">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors?.['required']">Name is required</div>
+        </div>
+      </div>
+      
+      <div>
+        <label>Email:</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors?.['required']">Email is required</div>
+          <div *ngIf="email.errors?.['email']">Invalid email format</div>
+        </div>
+      </div>
+      
+      <div id="checkbox">
+        <label>Subscribe to newsletter:</label>
+        <input type="checkbox" formControlName="subscribe">
+      </div>
+      
+      <button class="submit" type="button" (click)="onSubmit()" [disabled]="!userForm.valid">Submit</button>
+      <button class="reset" type="button" *ngIf="userForm.valid" (click)="clearForm()">Clear</button>
+
+    </form>
+    
+    <div *ngIf="submitted">
+      <h3>Form Data:</h3>
+      <pre>{{ formData | json }}</pre>
+    </div>

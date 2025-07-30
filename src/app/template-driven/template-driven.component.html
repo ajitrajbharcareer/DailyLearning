@@ -1,0 +1,31 @@
+<h2>User Registration - Template driven Form</h2>
+<form (ngSubmit)="onSubmit()">
+    <!-- Name Field -->
+    <div>
+        <label>Name:</label>
+        <input type="text" [(ngModel)]="user.name" name="name" required>
+        <div *ngIf="nameError" class="error">Name is required</div>
+    </div>
+
+    <!-- Email Field -->
+    <div>
+        <label>Email:</label>
+        <input type="text" [(ngModel)]="user.email" name="email" (input)="validateEmail()">
+        <div *ngIf="emailError" class="error">Invalid email format</div>
+    </div>
+
+
+    <div>
+        <label>Subscribe to newsletter:</label>
+        <input type="checkbox" [(ngModel)]="user.subscribe" [ngModelOptions]="{standalone: true}">
+    </div>
+
+
+    
+    <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="submittedData">
+    <h3>Submitted Data:</h3>
+    <pre>{{ submittedData | json }}</pre>
+</div>
