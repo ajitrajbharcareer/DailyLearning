@@ -1,3 +1,18 @@
-<app-reactive-form></app-reactive-form>
-<app-formarray></app-formarray>
-<app-template-driven></app-template-driven>
+<div *ngIf="!(userData$ | async)">
+  Loading user data...
+</div>
+
+  <div class="user-profile">
+    <h2>{{ (userData$ | async)?.id }}</h2>
+    <h2>{{ (userData$ | async)?.name }}</h2>
+    <p>Email: {{ (userData$ | async)?.email }}</p>
+    <p>Last updated: {{ lastUpdated | date:'medium' }}</p>
+  </div>
+  
+   <div>
+    <h2>{{ userData?.id }}</h2>
+    <h2>{{ userData?.name }}</h2>
+    <p>{{ userData?.email }}</p>
+  </div>
+
+  <button (click)="refreshData()">Refresh Data</button>

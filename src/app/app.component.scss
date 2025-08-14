@@ -1,91 +1,26 @@
-.left-center {
-    position: relative;
-    width: 100%;
-    margin-top: 50px;
+.loading {
+  padding: 1rem;
+  font-style: italic;
+  color: #666;
+}
 
-    .pusher-and-table {
-        position: absolute;
-        display: flex;
-        /* This keeps the image and table side-by-side */
-        align-items: center;
-        /* Vertically align them */
-        left: -200px;
-        /* Start off-screen */
-        top: -54px;
-        animation: push-to-center 4s 0.3s forwards ease-in-out;
+.user-profile {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
 
-        img {
-            width: 200px;
-            background: white;
-            transform: translate(106px, 10px);
-            z-index: 0;
-            animation: fade-out 0.3s 4.2s forwards;
-        }
-    
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-        .atul {
-            position: relative;
-            display: inline-block;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f8f8f8;
-            margin: 20px;
-            z-index: 200;
-            transform: translate(202px, -66px);
-            animation: fade-out 0.3s 4.2s forwards;
-            font-family: Arial, sans-serif;
-        }
-        
-        .atul::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 20px;
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-top-color: #f8f8f8;
-            border-bottom: 0;
-            margin-left: -10px;
-        }
-        
-        /* Border for the pointer */
-        .atul::before {
-            content: '';
-            position: absolute;
-            bottom: -11px;
-            left: 20px;
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-top-color: #ccc;
-            border-bottom: 0;
-            margin-left: -10px;
-            z-index: -1;
-        }
-
-        .table {
-            z-index: 1;
-            /* Table appears behind */
-            background-color: #f2f2f2;
-
-        }
-    }
-
-    @keyframes push-to-center {
-        0% {
-            left: -50%; /* Starts off-screen */
-        }
-        100% {
-            left: 15%; /* Moves to the horizontal center */
-        }
-    }
-
-    @keyframes fade-out {
-        to {
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
+button:hover {
+  background: #303f9f;
 }
